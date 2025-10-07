@@ -1,16 +1,15 @@
 workflows:
   android-workflow:
-    name: Android Build
+    name: Lost-and-Found Build
     max_build_duration: 60
     environment:
-      flutter: stable
-      xcode: latest
       vars:
-        BUILD_MODE: release
+        BUILD_MODE: debug
+      android:
+        gradle: latest        
+        java: openjdk11       
     scripts:
-      - name: Install Gradle dependencies
-        script: ./gradlew dependencies
       - name: Build APK
-        script: ./gradlew assembleDebug
+        script: gradle assembleDebug
     artifacts:
-      - build/app/outputs/**/*.apk
+      - app/build/outputs/**/*.apk
