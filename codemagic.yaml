@@ -2,8 +2,11 @@ workflows:
   android-workflow:
     name: Lost-and-Found Build
     max_build_duration: 60
+    environment:
+      vars:
+        BUILD_MODE: debug
     scripts:
       - name: Build APK
-        script: gradle assembleDebug
+        script: ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/**/*.apk
